@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+set -e
+
+basedir=$(dirname $(dirname $(realpath $0)))
+cd $basedir
+
+branchname=$1/$2
+
+# 현재 작업중인것이 있으면 stash
+status=$(git status -suno)
+if [ "$status" != "" ]; then
+	currentbranch=$(git rev-parse --abbrev-ref HEAD)
+	git stash save -q "WIP_$currentbranch"
+fi
+
+# 진행 중인 것이 있으면 pop
+stash=$(git stash list | grep WIP_$branchname$ | cut -d':' -f1)
+if [ "$stash" != "" ]; then
+	git checkout -q $branchname
+	git stash pop -q --index $stash
+else
+	# 진행 중인 것이 없으면 해당 문제의 기본 브랜치와 커밋을 한다.
+	git checkout -q -b $branchname
+	mkdir -p $1 && cd $1
+	git commit -q --allow-empty -m "start $2"
+fi
+
