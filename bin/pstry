@@ -11,7 +11,7 @@ branchname=$1/$2
 status=$(git status -suno)
 if [ "$status" != "" ]; then
 	currentbranch=$(git rev-parse --abbrev-ref HEAD)
-	git stash save -q "WIP_$currentbranch"
+	git stash save -q -k -u "WIP_$currentbranch"
 fi
 
 # 진행 중인 것이 있으면 pop
