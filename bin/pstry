@@ -23,6 +23,6 @@ else
 	# 진행 중인 것이 없으면 해당 문제의 기본 브랜치와 커밋을 한다.
 	git checkout -q -b $branchname
 	mkdir -p $1 && cd $1
-	git commit -q --allow-empty -m "start $2"
+	git commit -q --allow-empty -m "[$branchname] start $2"
 fi
 
