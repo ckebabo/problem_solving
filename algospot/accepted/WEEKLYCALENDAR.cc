@@ -17,7 +17,8 @@ int main() {
 	weekdays["Friday"] = 5;
 	weekdays["Saturday"] = 6;
 
-	int days[] = {31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	//            12   1   2   3   4   5   6   7   8   9  10  11  12   1
+	int days[] = {31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 31};
 
 	while(T--) {
 		int m,d,dd;
@@ -26,7 +27,7 @@ int main() {
 		cin >> m >> d >> day;
 		dd = weekdays[day];
 
-		if(d-dd < 0) {
+		if(d-dd <= 0) {
 			m -= 1;
 			d = days[m]+(d-dd);
 		} else {
@@ -38,7 +39,7 @@ int main() {
 			d += 1;
 			if(d>days[m]) {
 				d = 1;
-				m = (m+1)%13;
+				m += 1;
 			}
 		}
 		puts("");
