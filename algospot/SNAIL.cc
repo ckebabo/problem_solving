@@ -1,4 +1,5 @@
 #include <iostream>
+#include <numeric>
 
 using namespace std;
 
@@ -7,7 +8,7 @@ int main() {
 	cin >> C;
 
 	float t[1002][1002] = {{0,}};
-	for(int i=0;i<1002;i++) t[i][0] = 1;
+	t[0][0] = 1;
 	t[1][1] = 0.25; t[1][2] = 0.75;
 
 	for(int i=1;i<=1000;i++) {
@@ -20,7 +21,7 @@ int main() {
 		int n,m;
 		cin >> n >> m;
 
-		printf("%.10f\n", t[m][n] + t[m][n+1]);
+		printf("%.10f\n", accumulate(t[m]+n, t[m]+1002, 0.));
 	}
 
 	return 0;
