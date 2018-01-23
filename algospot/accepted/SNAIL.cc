@@ -3,11 +3,12 @@
 
 using namespace std;
 
+double t[1002][2002] = {{0,}};
+
 int main() {
 	int C;
 	cin >> C;
 
-	float t[1002][2002] = {{0,}};
 	t[0][0] = 1;
 	t[1][1] = 0.25; t[1][2] = 0.75;
 
