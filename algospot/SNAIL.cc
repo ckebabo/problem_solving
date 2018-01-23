@@ -6,18 +6,13 @@ int main() {
 	int C;
 	cin >> C;
 
-	float t[1002][1002];
-	t[0][0] = 1;
-	for(int i=1;i<1002;i++) t[0][i] = 0;
+	float t[1002][1002] = {{0,}};
+	for(int i=0;i<1002;i++) t[i][0] = 1;
+	t[1][1] = 0.25; t[1][2] = 0.75;
 
 	for(int i=1;i<=1000;i++) {
-		t[i][0] = t[i][1] = 1;
-		for(int j=2;j<=1001;j++) {
-			if(i >= j) {
-				t[i][j] = 1;
-			} else {
-				t[i][j] = t[i-1][j-2]*0.75 + t[i-1][j-1]*0.25;
-			}
+		for(int j=i;j<=1001;j++) {
+			t[i][j] = t[i-1][j-2]*0.75 + t[i-1][j-1]*0.25;
 		}
 	}
 
@@ -25,11 +20,7 @@ int main() {
 		int n,m;
 		cin >> n >> m;
 
-		float ans = 1.;
-		if(m < n) {
-			ans = t[m][n];
-		}
-		printf("%.10f\n", ans);
+		printf("%.10f\n", t[m][n] + t[m][n+1]);
 	}
 
 	return 0;
