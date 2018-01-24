@@ -19,10 +19,11 @@ int main() {
 			if(n%i == 0) { d.insert(i); d.insert(n/i); }
 		}
 
-		bool ans = true;
+		bool ans = false;
 		bool t[500001] = {false,};
 		t[0] = true;
 		if(accumulate(d.begin(), d.end(), 0) > n) {
+			ans = true;
 			for(auto v : d) {
 				for(int i=n-v;i>=0;i--) {
 					if(t[i]) t[i+v] = true;
