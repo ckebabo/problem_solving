@@ -14,7 +14,8 @@ int main() {
 
 		set<int> d;
 		d.insert(1);
-		for(int i=sqrt(n)+1;i>=2;i--) {
+		if(n!=2 && n%2==0) { d.insert(2); d.insert(n/2); }
+		for(int i=sqrt(n)+1;i>2;i--) {
 			if(n%i == 0) { d.insert(i); d.insert(n/i); }
 		}
 
