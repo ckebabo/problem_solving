@@ -19,22 +19,15 @@ int main() {
 		}
 
 		bool ans = true;
+		bool t[500001] = {false,};
+		t[0] = true;
 		if(accumulate(d.begin(), d.end(), 0) > n) {
-			set<int> k;
-			k.insert(0);
 			for(auto v : d) {
-				set<int> kk = k;
-				for(auto s : k) {
-					if(s+v > n) break;
-					kk.insert(s+v);
-				}
-				k = kk;
-
-				if(k.find(n) != k.end()) {
-					ans = false;
-					break;
+				for(int i=n-v;i>=0;i--) {
+					if(t[i]) t[i+v] = true;
 				}
 			}
+			if(t[n]) ans=false;
 		}
 
 		cout << (ans ? "" : "not ") << "weird" << endl;
