@@ -25,6 +25,7 @@ int main() {
 			for(auto v : d) {
 				set<int> kk = k;
 				for(auto s : k) {
+					if(s+v > n) break;
 					kk.insert(s+v);
 				}
 				k = kk;
