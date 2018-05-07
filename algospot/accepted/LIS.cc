@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -9,12 +10,12 @@ int lis(const vector<int> &l) {
 
 	for(int i=0; i<k; i++) {
 		res[i] = 1;
-		for(int j=i-1; j>=0; j--) {
+		for(int j=0; j<i; j++) {
 			if(l[i] > l[j]) res[i] = max(res[i], res[j]+1);
 		}
 	}
 
-	return res[k-1];
+	return *max_element(res, res+k);
 }
 
 int main() {
