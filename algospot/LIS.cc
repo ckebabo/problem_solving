@@ -9,7 +9,7 @@ int lis(const vector<int> &l) {
 
 	for(int i=0; i<k; i++) {
 		res[i] = 1;
-		for(int j=k-1; j>=0; j--) {
+		for(int j=i-1; j>=0; j--) {
 			if(l[i] > l[j]) res[i] = max(res[i], res[j]+1);
 		}
 	}
