@@ -7,7 +7,7 @@
 using namespace std;
 
 map<int, vector<int> > cache;
-int f[100005];
+int f[100005] = {0,};
 
 vector<int> tree(int n) {
 	vector<int> &r = cache[n];
@@ -53,15 +53,12 @@ int main() {
 			reverse(aa.begin(), aa.end());
 			reverse(bb.begin(), bb.end());
 
-			int ans = 0;
+			int ans = abs(int(aa.size() - bb.size()));
 			for(int i=0;i<aa.size();i++) {
 				if(aa[i] != bb[i]) {
 					ans = aa.size()-i + bb.size()-i;
 					break;
 				}
-			}
-			if(ans==0) {
-				ans = abs(int(aa.size() - bb.size()));
 			}
 
 			printf("%d\n", ans);
