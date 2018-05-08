@@ -54,7 +54,8 @@ int main() {
 			reverse(bb.begin(), bb.end());
 
 			int ans = abs(int(aa.size() - bb.size()));
-			for(int i=0;i<aa.size();i++) {
+			const int sz = min(aa.size(), bb.size());
+			for(int i=0;i<sz;i++) {
 				if(aa[i] != bb[i]) {
 					ans = aa.size()-i + bb.size()-i;
 					break;
