@@ -26,7 +26,7 @@ int main() {
 		cin >> i >> j;
 		if(i>j) swap(i,j);
 
-		if((k[i]==k[j] && s[i]!='1') || abs(k[i]-k[j])==abs(i-j)) {
+		if((k[i]==k[j] && s[i]!='1') || (s[i]=='1' && k[j]-k[i]==j-i)) {
 			cout << "Yes" << endl;
 		} else {
 			cout << "No" << endl;
