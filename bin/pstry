@@ -5,7 +5,9 @@ set -e
 basedir=$(dirname $(dirname $(realpath $0)))
 cd $basedir
 
-branchname=$1/$2
+site=$1
+problem=$2
+branchname=$site/$problem
 
 # 현재 작업중인것이 있으면 stash
 status=$(git status -suno)
@@ -16,13 +18,16 @@ fi
 
 # 진행 중인 것이 있으면 pop
 stash=$(git stash list | grep WIP_$branchname$ | cut -d':' -f1)
+branch=$(git branch | grep $branchname || true)
 if [ "$stash" != "" ]; then
 	git checkout -q $branchname
 	git stash pop -q --index $stash
+elif [ "$branch" != "" ]; then
+	git checkout -q $branchname
 else
 	# 진행 중인 것이 없으면 해당 문제의 기본 브랜치와 커밋을 한다.
-	git checkout -q -b $branchname
-	mkdir -p $1 && cd $1
-	git commit -q --allow-empty -m "[$branchname] start $2"
+	git checkout -q -b $branchname master
+	mkdir -p $site && cd $site
+	git commit -q --allow-empty -m "[$branchname] start $branchname"
 fi
 
