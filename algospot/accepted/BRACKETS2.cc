@@ -16,6 +16,7 @@ int main() {
 			if(string("({[").find(c) != string::npos) {
 				st.push(c);
 			} else {
+				if(st.empty()) { st.push('a'); break; }
 				char ch = st.top();
 				if(!((ch=='(' && c==')') ||
 					(ch=='{' && c=='}') ||
