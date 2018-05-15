@@ -10,6 +10,11 @@ int main() {
 	while(C--) {
 		string a,b;
 		cin >> a >> b;
+		if(a==b) {
+			cout << "No." << endl;
+			continue;
+		}
+
 		sort(begin(a), end(a));
 		sort(begin(b), end(b));
 
