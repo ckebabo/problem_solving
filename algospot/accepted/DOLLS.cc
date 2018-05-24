@@ -36,14 +36,16 @@ int main() {
 			v[i] = max(0, v[i]-sum);
 		}
 
-		const int p = m / (n-cnt);
-		int r = m % (n-cnt);
+		if(cnt < n) {
+			const int p = m / (n-cnt);
+			int r = m % (n-cnt);
 
-		for(int i=0; i<n; i++) {
-			if(v[i] > 0) { v[i]-=p; ans[i] += p; m -= p; }
-		}
-		for(int i=0; r>0; i++) {
-			if(v[i] > 0) { v[i]-=1; ans[i] += 1; m -= 1; r -= 1; }
+			for(int i=0; i<n; i++) {
+				if(v[i] > 0) { v[i]-=p; ans[i] += p; m -= p; }
+			}
+			for(int i=0; r>0; i++) {
+				if(v[i] > 0) { v[i]-=1; ans[i] += 1; m -= 1; r -= 1; }
+			}
 		}
 
 		for(int i=0;i<n;i++) printf("%d ", ans[i]); puts("");
