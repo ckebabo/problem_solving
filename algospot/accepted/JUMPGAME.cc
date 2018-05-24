@@ -1,41 +1,30 @@
 #include <iostream>
-#include <vector>
-#include <deque>
-#include <cstdio>
-#include <utility>
 
 using namespace std;
 
 int main() {
-	int grid[100][100];
-
 	int C;
 	cin >> C;
-
 	while(C--) {
-		int N;
-		cin >> N;
+		int n;
+		cin >> n;
 
-		for(int i=0;i<N;i++) for(int j=0;j<N;j++) cin >> grid[i][j];
+		int t[100][100];
+		int r[100][100] = {{0,},};
 
-		int t[100][100] {{0,},};
-		t[0][0] = 1;
-		for(int i=0;i<N;i++) {
-			for(int j=0;j<N;j++) {
-				if(t[i][j]) {
-					int y = i+grid[i][j];
-					int x = j+grid[i][j];
-					if(x<N) t[i][x] = 1;
-					if(y<N) t[y][j] = 1;
+		for(int i=0;i<n;i++) for(int j=0;j<n;j++) cin >> t[i][j];
+
+		r[0][0] = 1;
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				if(r[i][j]) {
+					if(i+t[i][j] < n) r[i+t[i][j]][j] = 1;
+					if(j+t[i][j] < n) r[i][j+t[i][j]] = 1;
 				}
 			}
 		}
 
-		if(t[N-1][N-1] == 0) {
-			puts("NO");
-		} else {
-			puts("YES");
-		}
+		cout << (r[n-1][n-1] ? "YES" : "NO") << endl;
 	}
 
 	return 0;
