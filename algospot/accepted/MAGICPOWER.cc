@@ -18,7 +18,7 @@ int main() {
 		}
 
 		int ans=0;
-		while(M--) {
+		while(!q.empty() && M--) {
 			int k = q.top(); q.pop();
 			ans += k;
 			if(k>1) q.push(k-1);
