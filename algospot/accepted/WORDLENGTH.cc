@@ -35,7 +35,7 @@ int main() {
 			cnt += 1;
 		}
 
-		printf("%lf\n", (double)sum/cnt);
+		printf("%.3f\n", (float)sum/cnt);
 	}
 
 	return 0;
