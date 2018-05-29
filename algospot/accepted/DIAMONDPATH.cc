@@ -22,7 +22,7 @@ int main() {
 			for(int j=1;j<i;j++) {
 				r[i][j] = max(r[i-1][j], r[i-1][j-1]) + t[i][j];
 			}
-			r[i][i] = r[i-1][i] + t[i][i];
+			r[i][i] = r[i-1][i-1] + t[i][i];
 		}
 		for(int i=N;i<N*2-1;i++) {
 			for(int j=0;j<N*2-i-1;j++) {
