@@ -10,8 +10,8 @@ int main() {
 		int N;
 		cin >> N;
 
-		int t[100][100];
-		int r[100][100];
+		int t[200][200];
+		int r[200][200];
 
 		for(int i=0;i<N;i++) for(int j=0;j<=i;j++) cin >> t[i][j];
 		for(int i=N;i<N*2-1;i++) for(int j=0;j<N*2-i-1;j++) cin >> t[i][j];
