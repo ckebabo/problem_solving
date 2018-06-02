@@ -6,12 +6,13 @@ for _ in range(C):
     ans = None
     for _ in range(N):
         s = input()
-        n = 1
+        d,a = 0,0
         for c in s:
             if c.isdigit():
-                n *= 10
+                d += 1
             elif c.isalpha():
-                n *= 26
+                a += 1
+        n = 26**a * 10**d
 
         if mm < n:
             mm, ans = n, s
